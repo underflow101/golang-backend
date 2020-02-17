@@ -10,9 +10,9 @@ bin/
 pkg/
 src/
 
-bin/**
-pkg/**
-src/**
+bin/*
+pkg/*
+src/*
 
 # Test binary, built with `go test -c`
 *.test
