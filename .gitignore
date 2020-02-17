@@ -6,6 +6,10 @@
 *.dylib
 *.DS_Store
 
+bin/**
+pkg/**
+src/**
+
 # Test binary, built with `go test -c`
 *.test
 
