@@ -32,7 +32,7 @@
                 if (!window["WebSocket"]) {
                     alert("ERROR! Web socket no longer supports your web browser.")
                 } else {
-                    socket = new WebSocket("ws://localhost:8080/room");
+                    socket = new WebSocket("ws://{{.Host}}:8080/room");
                     socket.onclose = function() {
                         alert("Connection Ended.");
                     }
