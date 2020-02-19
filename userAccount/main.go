@@ -8,6 +8,8 @@ import (
 	"path/filepath"
 	"sync"
 
+	"secret"
+
 	"github.com/stretchr/gomniauth"
 	"github.com/stretchr/gomniauth/providers/facebook"
 	"github.com/stretchr/gomniauth/providers/github"
@@ -30,11 +32,15 @@ func (t *templateHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func main() {
 	var addr = flag.String("addr", ":8080", "The addr of the application.")
 	flag.Parse()
+
+	googleKey := secret.GoogleKey()
+	googlePass := secret.GooglePass()
+
 	gomniauth.SetSecurityKey("PUT YOUR AUTH KEY HERE")
 	gomniauth.WithProviders(
 		facebook.New("key", "secret", "http://localhost:8080/auth/callback/facebook"),
 		github.New("key", "secret", "http://localhost:8080/auth/callback/github"),
-		google.New("key", "secret", "http://localhost:8080/auth/callback/google"),
+		google.New(googleKey, googlePass, "http://localhost:8080/auth/callback/google"),
 	)
 	r := newRoom()
 	//http.Handle("/assets/", http.StripPrefix("/asstes", http.FileServer(http.Dir("/path/to/assets"))))
