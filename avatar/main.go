@@ -50,11 +50,14 @@ func main() {
 		github.New("key", "secret", "http://localhost:8080/auth/callback/github"),
 		google.New(googleKey, googlePass, "http://localhost:8080/auth/callback/google"),
 	)
-	r := newRoom(UseGravatar)
+
+	r := newRoom(UseFileSystemAvatar)
+
 	//http.Handle("/assets/", http.StripPrefix("/asstes", http.FileServer(http.Dir("/path/to/assets"))))
 	http.Handle("/chat", MustAuth(&templateHandler{filename: "chat.html"}))
 	http.Handle("/login", &templateHandler{filename: "login.html"})
 	http.Handle("/upload", &templateHandler{filename: "upload.html"})
+	http.Handle("/avatars/", http.StripPrefix("/avatars/", http.FileServer(http.Dir("./avatars"))))
 	http.HandleFunc("/auth/", loginHandler)
 	http.HandleFunc("/uploader", uploaderHandler)
 	http.HandleFunc("/logout", func(w http.ResponseWriter, r *http.Request) {
