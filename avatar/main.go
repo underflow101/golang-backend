@@ -18,6 +18,12 @@ import (
 	"github.com/stretchr/gomniauth/providers/google"
 )
 
+var avatars Avatar = TryAvatars{
+	UseFileSystemAvatar,
+	UseAuthAvatar,
+	UseGravatar,
+}
+
 type templateHandler struct {
 	once     sync.Once
 	filename string
@@ -51,7 +57,7 @@ func main() {
 		google.New(googleKey, googlePass, "http://localhost:8080/auth/callback/google"),
 	)
 
-	r := newRoom(UseFileSystemAvatar)
+	r := newRoom()
 
 	//http.Handle("/assets/", http.StripPrefix("/asstes", http.FileServer(http.Dir("/path/to/assets"))))
 	http.Handle("/chat", MustAuth(&templateHandler{filename: "chat.html"}))
