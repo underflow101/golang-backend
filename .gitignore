@@ -1,3 +1,4 @@
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
@@ -6,6 +7,17 @@
 *.dylib
 *.DS_Store
 *.code-workspace
+
+fillstruct
+gocode
+godoctor
+goimports
+golint
+gomodifytags
+goplay
+gopls
+gotests
+impl
 
 bin/
 pkg/
