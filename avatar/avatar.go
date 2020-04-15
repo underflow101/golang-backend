@@ -1,3 +1,5 @@
+// avatar.go
+
 package main
 
 import (
