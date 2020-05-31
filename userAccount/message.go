@@ -1,3 +1,5 @@
+// message.go
+
 package main
 
 import (
