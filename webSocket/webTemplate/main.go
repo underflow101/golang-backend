@@ -8,7 +8,7 @@ import (
 	"text/template"
 )
 
-// sync.Once assures only one time run of function regardless of how many times goroutines call ServeHTTP func
+// sync.Once assures only one time run of func regardless of how many times goroutines call ServeHTTP func
 type templateHandler struct {
 	once     sync.Once
 	filename string
