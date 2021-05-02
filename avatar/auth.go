@@ -59,7 +59,6 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	provider := segs[3]
 	switch action {
 	case "login":
-
 		provider, err := gomniauth.Provider(provider)
 		if err != nil {
 			log.Fatalln("Error when trying to get provider", provider, "-", err)
@@ -74,7 +73,6 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusTemporaryRedirect)
 
 	case "callback":
-
 		provider, err := gomniauth.Provider(provider)
 		if err != nil {
 			log.Fatalln("Error when trying to get provider", provider, "-", err)
